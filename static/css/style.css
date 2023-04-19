@@ -1078,7 +1078,6 @@ textarea#comment::placeholder {
 }
 
 .editbtn {
-    background: #3498db;
     background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
     background-image: -moz-linear-gradient(top, #3498db, #2980b9);
     background-image: -ms-linear-gradient(top, #3498db, #2980b9);
@@ -1090,14 +1089,14 @@ textarea#comment::placeholder {
     font-family: Poppins;
     color: #ffffff;
     font-size: 20px;
-    background: #000000;
+    background: #202020;
     padding: 0px 15px 0px 15px;
-    border: solid #000000 2px;
+    border: solid #202020 2px;
     text-decoration: none;
 }
   
 .editbtn:hover {
     background: #ffffff;
-    color: #000;
+    color: #202020;
     text-decoration: none;
 }
