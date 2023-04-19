@@ -88,16 +88,35 @@
                     <ul class="list-group list-group-flush">
                       <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                         <button class="subbtn" style="margin-left: 50px">Apply for Subscription</button>
-                        <!-- <h6 class="mb-0" style="font-size: 18px">Apply for Subscription</h6> -->
                       </li>
                       <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                         <button class="subbtn" style="margin-left: 50px">Apply for Membership</button>
-                        <!-- <h6 class="mb-0">Apply for Membership</h6>-->
                       </li>
                       <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                        <button class="subbtn" style="margin-left: 65px">Cancel your Order</button>
-                        <!-- <h6 class="mb-0">Cancel your Order</h6> -->
+                        <button class="subbtn" style="margin-left: 65px" onclick="toggleCard()">Cancel your Order</button>
                       </li>
+                      <div class="card p-3 py-4" id="profile-card">
+                        <div class="text-center">
+                            <img src="https://i.imgur.com/bDLhJiP.jpg" width="100" class="rounded-circle">
+                        </div>
+                        <div class="text-center mt-3">
+                            <h5 class="mt-2 mb-0">Cancel Order?</h5>
+                            <div class="px-4 mt-1">
+                                <p class="fonts">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                            </div>
+                             <ul class="social-list">
+                                <li><i class="fa fa-facebook"></i></li>
+                                <li><i class="fa fa-dribbble"></i></li>
+                                <li><i class="fa fa-instagram"></i></li>
+                                <li><i class="fa fa-linkedin"></i></li>
+                                <li><i class="fa fa-google"></i></li>
+                            </ul>
+                            <div class="buttons">
+                                <button class="btn btn-outline-primary px-4">Message</button>
+                                <button class="btn btn-primary px-4 ms-3">Contact</button>
+                            </div>
+                        </div>
+                      </div>
                       <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                         <a href="{{url_for('logout')}}"><button class="subbtn" style="margin-left: 110px">Logout</button></a>
                         <!-- <h6 class="mb-0">Instagram</h6> -->
@@ -252,9 +271,7 @@
          
     $(this).removeClass('transition');
     });
-    });
-    </script> 
-    <script>
+    });    
      function openNav() {
      document.getElementById("myNav").style.width = "100%";
     }
@@ -262,5 +279,15 @@
      document.getElementById("myNav").style.width = "0%";
     }
     </script>  
+    <script>
+      function toggleCard() {
+        var card = document.getElementById("profile-card");
+        if (card.style.display === "none") {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      }  
+    </script>
 </body>
 </html>
