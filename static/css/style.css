@@ -276,6 +276,15 @@ button {
     display: block;
     transition: 0.3s;
 }
+.overlay a:hover {
+    padding: 0px;
+    text-decoration: none;
+    font-size: 22px;
+    color: #89cbeb;
+    display: block;
+    transition: 0.3s;
+}
+
 .overlay-content {
     position: relative;
     top: 25%;
@@ -861,7 +870,6 @@ button {
     border-bottom: 2px solid #6f6f6f !important;
     border: 0px;
     padding: 20px 15px 10px 15px;
-    text-transform: uppercase;
     height: auto;
 }
 input.email_text::placeholder {
@@ -1062,4 +1070,9 @@ textarea#comment::placeholder {
     background: #202020;
     border: solid #202020 2px;
     text-decoration: none;
+}
+
+::selection {
+    background-color: #6ca7c9;
+    color: #000;
 }
