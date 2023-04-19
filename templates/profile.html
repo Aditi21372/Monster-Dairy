@@ -189,7 +189,15 @@
                       <div class="card h-100">
                         <div class="card-body">
                           <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Past Orders</i>Status</h6>
-                          <small>Web Design</small>
+                          {% if orders != "nup" %}
+                            {% for i in range(orders|length) %}
+                              <small>Click to see details</small>
+                              <h6 class="mb-0">Order ID {{orders[i]['OrderID']}}</h6>
+                            {% endfor %}
+                          {% else %}
+                            <small>Place an order</small>
+                            <h6 class="mb-0">You have no recent orders</h6>
+                          {% endif %}
                         </div>
                       </div>
                     </div>

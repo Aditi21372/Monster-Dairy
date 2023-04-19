@@ -178,7 +178,16 @@ def profile():
 		mem = cursor.fetchone()
 		if not mem:
 			mem = "nup"
-		return render_template("profile.html", account = account, phone = phone, sub = sub, mem = mem)
+		cursor.execute("""SELECT orders.*, customer_order.dateOfOrder
+						FROM orders
+						JOIN customer_order ON orders.orderID = customer_order.orderID
+						WHERE customer_order.customerID = % s""", (session['id'], ))
+		orders = cursor.fetchone()
+		if not orders:
+			orders = "nup"
+		else:
+			orders.append(len(orders))
+		return render_template("profile.html", account = account, phone = phone, sub = sub, mem = mem, orders = orders)
 	return redirect(url_for('login'))
 
 @app.route("/sales")
