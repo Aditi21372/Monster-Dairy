@@ -24,7 +24,9 @@ def index():
 @app.route('/customer', methods =['GET', 'POST'])
 def customer():
 	msg = ''
-	return render_template('customer.html', msg = msg)
+	if 'loggedin' in session:
+		return render_template('customer.html', msg = msg)
+	return render_template('login.html', msg = msg)
 
 @app.route('/adminindex', methods =['GET', 'POST'])
 def adminindex():
