@@ -185,8 +185,6 @@ def profile():
 		orders = cursor.fetchone()
 		if not orders:
 			orders = "nup"
-		else:
-			orders.append(len(orders))
 		return render_template("profile.html", account = account, phone = phone, sub = sub, mem = mem, orders = orders)
 	return redirect(url_for('login'))
 
