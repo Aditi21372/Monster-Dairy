@@ -1134,7 +1134,7 @@ textarea#comment::placeholder {
     cursor:pointer;
 }
 
-.cancelcard:before{
+/* .cancelcard:before{
     content:"";
     position:absolute;
     left:0;
@@ -1158,7 +1158,7 @@ textarea#comment::placeholder {
     transform:scaleY(0);
     transition:all 0.5s;
     transform-origin: bottom
-}
+} */
 
 .cancelcard:hover::after{
     transform:scaleY(1);
