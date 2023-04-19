@@ -164,7 +164,21 @@ def profile():
 		account = cursor.fetchone()
 		cursor.execute('SELECT phone_num FROM customer_phone WHERE customerID = % s', (session['id'], ))
 		phone = cursor.fetchone()
-		return render_template("profile.html", account = account, phone = phone)
+		cursor.execute("""SELECT Subscription.*, get_sub.dateofsub 
+						FROM Subscription 
+						INNER JOIN get_sub ON Subscription.SubscriptionID = get_sub.SubscriptionID 
+						WHERE get_sub.customerID = % s""", (session['id'], ))
+		sub = cursor.fetchone()
+		if not sub:
+			sub = "You have no Subscriptions!"
+		cursor.execute("""SELECT Membership.*, get_vip.dateofmem
+						FROM Membership 
+						INNER JOIN get_vip ON Membership.MembershipID = get_vip.MembershipID 
+						WHERE get_vip.customerID = % s""", (session['id'], ))
+		mem = cursor.fetchone()
+		if not mem:
+			mem = "You have no Memberships!"
+		return render_template("profile.html", account = account, phone = phone, sub = sub, mem = mem)
 	return redirect(url_for('login'))
 
 @app.route("/sales")
