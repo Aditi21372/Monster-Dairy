@@ -92,6 +92,7 @@ def register():
 		email = request.form['email']
 		accountnum = request.form['accountnum']
 		address = request.form['address']
+		number = request.form['number']
 		city = request.form['city']
 		state = request.form['state']
 		age = request.form['age']
@@ -111,6 +112,7 @@ def register():
 			street_name = addresslist[1]
 			street_number = addresslist[2]
 			cursor.execute('INSERT INTO customer VALUES (NULL, % s, % s, % s, % s, % s, % s, % s, % s, % s, % s, % s)', (username, accountnum, age, street_number, street_name, apt_num, city, state, postalcode, email, password))
+			cursor.execute('INSERT INTO customer_phone VALUES (NULL, % s)', (number))
 			mysql.connection.commit()
 			msg = 'You have successfully registered !'
 	elif request.method == 'POST':
@@ -149,9 +151,11 @@ def cart():
 def profile():
 	if 'loggedin' in session:
 		cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-		cursor.execute('SELECT customerID,  username, account_num, age, street_number, street_name, apt_number, city, state, , zip, EmailID,  password FROM customer WHERE customerID = % s', (session['id'], ))
+		cursor.execute('SELECT customerID,  username, account_num, age, street_number, street_name, apt_number, city, state, zip, EmailID,  password FROM customer WHERE customerID = % s', (session['id'], ))
 		account = cursor.fetchone()
-		return render_template("profile.html")
+		cursor.execute('SELECT phone_num FROM customer_phone WHERE customerID = % s', (session['id'], ))
+		phone = cursor.fetchone()
+		return render_template("profile.html", account = account, phone = phone)
 	return redirect(url_for('login'))
 
 @app.route("/sales")
