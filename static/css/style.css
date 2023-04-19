@@ -1177,27 +1177,27 @@ textarea#comment::placeholder {
 
 .social-list li{
     padding:10px;
-    color:#8E24AA;
+    color:#89cbeb;
     font-size:19px;
 }
 
 
 .buttons button:nth-child(1){
-       border:1px solid #8E24AA !important;
-       color:#8E24AA;
+       border:1px solid #89cbeb !important;
+       color:#89cbeb;
        height:40px;
 }
 
 .buttons button:nth-child(1):hover{
-       border:1px solid #8E24AA !important;
+       border:1px solid #89cbeb !important;
        color:#fff;
        height:40px;
-       background-color:#8E24AA;
+       background-color:#89cbeb;
 }
 
 .buttons button:nth-child(2){
-       border:1px solid #8E24AA !important;
-       background-color:#8E24AA;
+       border:1px solid #89cbeb !important;
+       background-color:#89cbeb;
        color:#fff;
         height:40px;
 }
