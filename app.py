@@ -76,14 +76,14 @@ def logout():
     session.pop('loggedin', None)
     session.pop('id', None)
     session.pop('username', None)
-    return redirect(url_for('login'))
+    return redirect(url_for('index'))
 
 @app.route('/adminlogout')
 def adminlogout():
     session.pop('adminin', None)
     session.pop('aid', None)
     session.pop('username', None)
-    return redirect(url_for('admin'))
+    return redirect(url_for('index'))
 
 @app.route('/register', methods =['GET', 'POST'])
 def register():
