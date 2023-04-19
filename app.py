@@ -149,8 +149,8 @@ def cart():
 def profile():
 	if 'loggedin' in session:
 		cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-		# cursor.execute('SELECT SUM(TotalQuantity), SUM(price) FROM cart_item WHERE customerID = % s', (session['id'], ))
-		# account = cursor.fetchone()
+		cursor.execute('SELECT customerID,  username, account_num, age, street_number, street_name, apt_number, city, state, , zip, EmailID,  password FROM customer WHERE customerID = % s', (session['id'], ))
+		account = cursor.fetchone()
 		return render_template("profile.html")
 	return redirect(url_for('login'))
 
