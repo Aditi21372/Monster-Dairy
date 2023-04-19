@@ -170,14 +170,14 @@ def profile():
 						WHERE get_sub.customerID = % s""", (session['id'], ))
 		sub = cursor.fetchone()
 		if not sub:
-			sub = "You have no Subscriptions!"
+			sub = "nup"
 		cursor.execute("""SELECT Membership.*, get_vip.dateofmem
 						FROM Membership 
 						INNER JOIN get_vip ON Membership.MembershipID = get_vip.MembershipID 
 						WHERE get_vip.customerID = % s""", (session['id'], ))
 		mem = cursor.fetchone()
 		if not mem:
-			mem = "You have no Memberships!"
+			mem = "nup"
 		return render_template("profile.html", account = account, phone = phone, sub = sub, mem = mem)
 	return redirect(url_for('login'))
 
