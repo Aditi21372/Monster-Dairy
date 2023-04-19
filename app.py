@@ -140,6 +140,13 @@ def shop():
         return render_template("shop.html", account = account)
     return redirect(url_for('login'))
 
+@app.route("/browse", methods=['GET', 'POST'])
+def browse():
+	cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+	cursor.execute('SELECT * FROM item WHERE ItemID >= 1 and ItemID <= 30')
+	account = cursor.fetchall()
+	return render_template("browse.html", account = account)
+
 @app.route("/cart")
 def cart():
 	if 'loggedin' in session:
