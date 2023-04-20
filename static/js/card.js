@@ -1,7 +1,7 @@
 function toggleCard() {
     var overlay = document.getElementById("overlay");
     var card = document.getElementById("profile-card");
-    if (card.style.display === "none" || overlay.style.display === "none") {
+    if (card.style.display === "none") {
       overlay.style.display = "block";
       card.style.display = "block";
     } else {
