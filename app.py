@@ -157,6 +157,15 @@ def cart():
 		return render_template("cart.html", account = account)
 	return redirect(url_for('login'))
 
+@app.route('/payment', methods =['GET', 'POST'])
+def payment():
+	if 'loggedin' in session:
+		cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+		cursor.execute('SELECT SUM(TotalQuantity), SUM(price) FROM cart_item WHERE customerID = % s', (session['id'], ))
+		account = cursor.fetchone()
+		return render_template("payment.html", account = account)
+	return redirect(url_for('login'))
+
 @app.route("/profile", methods=['GET', 'POST'])
 def profile():
 	if 'loggedin' in session:
