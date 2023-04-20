@@ -98,7 +98,10 @@
             </div>
             <div class="buttons d-flex justify-content-center">
               <button class="btn btn-outline-primary px-4" id="no2" style="margin-right: 10px">No</button>
-              <form name="subscription" action="{{ url_for('profile') }}" method="POST">
+              <form action="{{ url_for('profile') }}" method="POST">
+                <input type="hidden" name="name" value="subscription">
+                <input type="hidden" name="expiry_date" id="expiryDate">
+                <input type="hidden" name="subscription_type" id="subscriptionType">
                 <button type="submit" class="btn btn-primary px-4 ms-3" id="yes2">Yes</button>
               </form>
             </div>

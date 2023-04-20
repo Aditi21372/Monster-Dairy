@@ -65,24 +65,34 @@ const dropdownItems = document.querySelectorAll('.dropdown-item');
 dropdownItems.forEach(item => {
   item.addEventListener('click', () => {
     const selectedValue = item.getAttribute('data-value');
+    var expiresOnDate;
     if (selectedValue === 'Monthly') {
-      const expiresOnDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toLocaleDateString('en-GB', {year: 'numeric', month: '2-digit', day: '2-digit'});
+      expiresOnDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
       expiresOnField.innerHTML = `Expires on <br><span style="color: #6c757d; font-weight: bold; font-size:13px;">${expiresOnDate}</span>`;
       priceField.innerHTML = 'Price <br><span style="color: #6c757d; font-weight: bold; font-size:13px;">Rs.100 per month</span>';
     } else if (selectedValue === 'Quaterly') {
-      const expiresOnDate = new Date(Date.now() + 3 * 30 * 24 * 60 * 60 * 1000).toLocaleDateString('en-GB', {year: 'numeric', month: '2-digit', day: '2-digit'});
+      expiresOnDate = new Date(Date.now() + 3 * 30 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
       expiresOnField.innerHTML = `Expires on <br><span style="color: #6c757d; font-weight: bold; font-size:13px;">${expiresOnDate}</span>`;
       priceField.innerHTML = 'Price <br><span style="color: #6c757d; font-weight: bold; font-size:13px;">Rs.270 per quarter</span>';
     } else if (selectedValue === 'Yearly') {
-      const expiresOnDate = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toLocaleDateString('en-GB', {year: 'numeric', month: '2-digit', day: '2-digit'});
+      expiresOnDate = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
       expiresOnField.innerHTML = `Expires on <br><span style="color: #6c757d; font-weight: bold; font-size:13px;">${expiresOnDate}</span>`;
       priceField.innerHTML = 'Price <br><span style="color: #6c757d; font-weight: bold; font-size:13px;">Rs.1000 per year</span>';
-    }    
+    }        
+    
+    const expiryDateInput = document.getElementById('expiryDate');
+    expiryDateInput.value = expiresOnDate;
+
+    const subscriptionTypeInput = document.getElementById('subscriptionType');
+    subscriptionTypeInput.value = selectedValue;
+
+    document.forms['subscription'].submit();  
   });
 });
 
 expiresOnField.textContent = 'Expires on';
 priceField.textContent = 'Price';
+
 
 // Membership Card
 function toggleCard3() {

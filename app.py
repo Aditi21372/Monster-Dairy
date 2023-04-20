@@ -156,7 +156,7 @@ def cart():
 		return render_template("cart.html", account = account)
 	return redirect(url_for('login'))
 
-@app.route("/profile")
+@app.route("/profile", methods=['GET', 'POST'])
 def profile():
 	if 'loggedin' in session:
 		cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
@@ -186,11 +186,13 @@ def profile():
 		if not orders:
 			orders = "nup"
 		if request.method == 'POST':
-			form = request.form.get('form_name')
-			if form == 'subscription':
-				sub_type = request.form['typeofsub']
-				exp_date = request.form['expdate']
+			form_name = request.form['name']
+			if form_name == 'subscription':
+				exp_date = request.form['expiry_date']
+				sub_type = request.form['subscription_type']
 				cursor.execute('INSERT INTO Subscription VALUES (NULL, %s, %s)', (sub_type, exp_date))
+				mysql.connection.commit()
+				return redirect(url_for('profile'))
 		return render_template("profile.html", account = account, phone = phone, sub = sub, mem = mem, orders = orders)
 	return redirect(url_for('login'))
 
