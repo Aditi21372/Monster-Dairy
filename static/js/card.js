@@ -30,6 +30,8 @@ noButton2.addEventListener("click", function() {
   card2.style.display = "none";
 });
 
+
+
 const dropdown = document.querySelector('.dropdown');
 const dropdownToggle = dropdown.querySelector('.dropdown-toggle');
 const dropdownMenu = dropdown.querySelector('.dropdown-menu');
@@ -46,3 +48,28 @@ dropdownMenu.addEventListener('click', function(event) {
     dropdownToggle.dataset.value = target.dataset.value;
   }
 });
+
+
+const dropdownButton = document.getElementById('dropdownMenuButton');
+const expiresOnField = document.querySelector('.expires-on');
+const priceField = document.querySelector('.price');
+
+const dropdownItems = document.querySelectorAll('.dropdown-item');
+dropdownItems.forEach(item => {
+  item.addEventListener('click', () => {
+    const selectedValue = item.getAttribute('data-value');
+    if (selectedValue === 'Monthly') {
+      expiresOnField.innerHTML = 'Expires on: <br><span style="color: #6c757d; font-weight: bold; font-size:13px;">' + new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toLocaleDateString() + '</span>';
+      priceField.innerHTML = 'Price: <br><span style="color: #6c757d; font-weight: bold; font-size:13px;">Rs.100 per month</span>';
+    } else if (selectedValue === 'Quaterly') {
+      expiresOnField.innerHTML = 'Expires on: <br><span style="color: #6c757d; font-weight: bold; font-size:13px;">' + new Date(Date.now() + 3 * 30 * 24 * 60 * 60 * 1000).toLocaleDateString() + '</span>';
+      priceField.innerHTML = 'Price: <br><span style="color: #6c757d; font-weight: bold; font-size:13px;">Rs.270 per quarter</span>';
+    } else if (selectedValue === 'Yearly') {
+      expiresOnField.innerHTML = 'Expires on: <br><span style="color: #6c757d; font-weight: bold; font-size:13px;">' + new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toLocaleDateString() + '</span>';
+      priceField.innerHTML = 'Price: <br><span style="color: #6c757d; font-weight: bold; font-size:13px;">Rs.1000 per year</span>';
+    }
+  });
+});
+
+expiresOnField.textContent = 'Expires on:';
+priceField.textContent = 'Price:';
