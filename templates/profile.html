@@ -105,9 +105,10 @@
         <!--card section end --> 
         <!--card section start -->
         <div class="overlay" id="overlay3">
-          <div class="cancelcard p-3 py-4" id="profile-card3" style="top: 100px; bottom: 100px">
+          <div class="cancelcard p-3 py-4" id="profile-card3" style="top: 80px; bottom: 80px">
             <div class="text-center mt-3">
-              <h2 class="mt-2 mb-0">Membership Details</h2><br>
+              <h2 class="mt-2 mb-0">Membership Details</h2>
+              <p class="fonts">Yearly Membership to Monster Dairy</p>
               <div class="px-4 mt-1">
                 <h6 class="mb-0" style="text-align: left;">Type of Membership</h6>
                 <div class="dropdown" style="text-align: left;">
@@ -120,8 +121,8 @@
                     <a class="dropdown-item" href="#" data-value="Premium" style="text-align:center; color: #202020; font-size: 11px">Premium</a>
                   </div>
                 </div>
-                <h6 class="mb-0 expires-on" style="text-align: left;">Expires on</h6>
-                <h6 class="mb-0 price" style="text-align: left;">Price</h6>
+                <h6 class="mb-0 features" style="text-align: left;">Features</h6>
+                <h6 class="mb-0 p_price" style="text-align: left;">Price</h6>
               </div>
               <p class="fonts">Would you like to proceed to pay?</p>
             </div>
@@ -164,7 +165,7 @@
                         <button class="subbtn" style="margin-left: 50px" onclick="toggleCard2()">Apply for Subscription</button>
                       </li>
                       <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                        <button class="subbtn" style="margin-left: 50px">Apply for Membership</button>
+                        <button class="subbtn" style="margin-left: 50px" onclick="toggleCard3()">Apply for Membership</button>
                       </li>
                       <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                         <button class="subbtn" style="margin-left: 65px" onclick="toggleCard()">Cancel your Order</button>
@@ -288,14 +289,34 @@
                             <small>Click to see details</small>
                             <h6 class="mb-0">Subscription Active</h6>
                           {% else %}
-                            <small>Click to activate</small>
+                            <style>
+                              .link {
+                                color: inherit;
+                                text-decoration: inherit;
+                              }
+                              .link:hover {
+                                color: #49a9bc;
+                                cursor: pointer;
+                              }
+                            </style>
+                            <small class="link" onclick="toggleCard2()">Click to activate</small>
                             <h6 class="mb-0">Subscription Not Active</h6>
                           {% endif %}
                           {% if mem != "nup" %}
                             <small>Click to see details</small>
                             <h6 class="mb-0">Membership Active</h6>
                           {% else %}
-                            <small>Click to activate</small>
+                            <style>
+                              .link {
+                                color: inherit;
+                                text-decoration: inherit;
+                              }
+                              .link:hover {
+                                color: #49a9bc;
+                                cursor: pointer;
+                              }
+                            </style>
+                            <small class="link" onclick="toggleCard3()">Click to activate</small>
                             <h6 class="mb-0">Membership Not Active</h6>
                           {% endif %}
                         </div>

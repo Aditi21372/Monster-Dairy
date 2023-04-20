@@ -1139,6 +1139,13 @@ textarea#comment::placeholder {
     display: none;
 }
 
+#profile-card3 {
+    display: none;
+}
+#overlay3 {
+    display: none;
+}
+
 .cancelcard {
     position: fixed;
     top: 150px;
@@ -1261,7 +1268,7 @@ textarea#comment::placeholder {
   
   .dropdown-item.active,
   .dropdown-item:active {
-    background-color: #007bff;
+    background-color: #6ca7c9;
     color: #fff;
   }
   
