@@ -83,7 +83,6 @@
                 </ol>
               </nav> -->
               <!-- /Breadcrumb -->
-        
               <div class="row gutters-sm" style="padding-top: 50px">
                 <div class="col-md-4 mb-3">
                   <div class="card">
@@ -113,7 +112,6 @@
                       </li>
                       <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                         <a href="{{url_for('logout')}}"><button class="subbtn" style="margin-left: 110px">Logout</button></a>
-                        <!-- <h6 class="mb-0">Instagram</h6> -->
                       </li>
                     </ul>
                   </div>
@@ -208,7 +206,16 @@
                               <h6 class="mb-0">Order ID {{orders[i]['OrderID']}}</h6>
                             {% endfor %}
                           {% else %}
-                            <small>Place an order</small>
+                            <style>
+                              .link {
+                                color: inherit;
+                                text-decoration: inherit;
+                              }
+                              .link:hover {
+                                color: #49a9bc;
+                              }
+                            </style>
+                            <small><a href="{{url_for('cart')}}" class="link">Place an order</a></small>
                             <h6 class="mb-0">You have no recent orders</h6>
                           {% endif %}
                         </div>
