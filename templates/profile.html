@@ -74,6 +74,35 @@
             </div>
           </div>
         <!--card section end -->
+        <!--card section start -->
+        <div class="overlay" id="overlay2">
+          <div class="cancelcard p-3 py-4" id="profile-card2" style="bottom: 100px">
+            <div class="text-center mt-3">
+              <h2 class="mt-2 mb-0">Subscription Details</h2><br>
+              <div class="px-4 mt-1" style="display: flex; align-items: center;">
+                <h6 class="mb-0" style="text-align: left; flex: 1;">Type of Subscription</h6>
+                <div class="dropdown" style="text-align: right">
+                  <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Select
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#" data-value="Monthly" style="text-align:center; color: #202020; font-size: 11px">Monthly</a>
+                    <a class="dropdown-item" href="#" data-value="Quaterly" style="text-align:center; color: #202020; font-size: 11px">Quaterly</a>
+                    <a class="dropdown-item" href="#" data-value="Yearly" style="text-align:center; color: #202020; font-size: 11px">Yearly</a>
+                  </div>
+                </div>
+              </div>
+              <h6 class="mb-0" style="text-align: left; flex: 1;">Expires on</h6>
+              <h6 class="mb-0" style="text-align: left; flex: 1;">Price</h6>
+              <p class="fonts">Would you like to proceed to pay?</p>
+            </div>
+            <div class="buttons">
+              <button class="btn btn-outline-primary px-4" id="no2">No</button>
+              <button class="btn btn-primary px-4 ms-3" id="yes2">Yes</button>
+            </div>
+          </div>
+        </div>
+              <!--card section end -->      
               <!-- Breadcrumb -->
               <!-- <nav aria-label="breadcrumb" class="main-breadcrumb">
                 <ol class="breadcrumb">
@@ -102,7 +131,7 @@
                   <div class="card mt-3">
                     <ul class="list-group list-group-flush">
                       <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                        <button class="subbtn" style="margin-left: 50px">Apply for Subscription</button>
+                        <button class="subbtn" style="margin-left: 50px" onclick="toggleCard2()">Apply for Subscription</button>
                       </li>
                       <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                         <button class="subbtn" style="margin-left: 50px">Apply for Membership</button>

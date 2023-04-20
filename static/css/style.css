@@ -1128,6 +1128,17 @@ textarea#comment::placeholder {
 #profile-card {
     display: none;
 }
+#overlay {
+    display: none;
+}
+
+#profile-card2 {
+    display: none;
+}
+#overlay2 {
+    display: none;
+}
+
 .cancelcard {
     position: fixed;
     top: 150px;
@@ -1141,7 +1152,6 @@ textarea#comment::placeholder {
     border:none;
     overflow:hidden;
     border-radius:8px;
-    cursor:pointer;
 }
 
 .cancelcard:before{
@@ -1211,9 +1221,6 @@ textarea#comment::placeholder {
         height:40px;
 }
 
-#overlay {
-    display: none;
-}
 .overlay {
     position: fixed;
     top: 0;
@@ -1223,4 +1230,38 @@ textarea#comment::placeholder {
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
 }
+  
+.dropdown-toggle {
+    border: none;
+    background-color: #f8f9fa;
+    color: #6c757d;
+    font-weight: bold;
+    font-size:13px;
+    /* padding: 0.5rem 1rem; */
+    text-align: right;
+  }
+  
+  .dropdown-toggle:focus {
+    outline: none;
+    box-shadow: none;
+  }
+  
+  /* .dropdown-menu {
+    margin-top: 0.5rem;
+  } */
+  
+  /* .dropdown-item {
+    background-color: #f8f9fa;
+    color: #202020;
+  } */
+  .dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #202020;
+  }
+  
+  .dropdown-item.active,
+  .dropdown-item:active {
+    background-color: #007bff;
+    color: #fff;
+  }
   
