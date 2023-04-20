@@ -1125,23 +1125,33 @@ textarea#comment::placeholder {
     text-decoration: none;
 }
 
-
-.cancelcard{
+#profile-card {
+    display: none;
+}
+.cancelcard {
+    position: fixed;
+    top: 150px;
+    left: 500px;
+    right: 400px;
+    bottom: 200px;
+    z-index: 9999;
+    background-color: #fff; 
+    align-items: center;
+    justify-content: center;  
     border:none;
-    position:relative;
     overflow:hidden;
     border-radius:8px;
     cursor:pointer;
 }
 
-/* .cancelcard:before{
+.cancelcard:before{
     content:"";
     position:absolute;
     left:0;
     top:0;
     width:4px;
     height:100%;
-    background-color:#E1BEE7;
+    background-color:#89cbeb;
     transform:scaleY(1);
     transition:all 0.5s;
     transform-origin: bottom
@@ -1154,11 +1164,11 @@ textarea#comment::placeholder {
     top:0;
     width:4px;
     height:100%;
-    background-color:#8E24AA;
+    background-color:#6ca7c9;
     transform:scaleY(0);
     transition:all 0.5s;
     transform-origin: bottom
-} */
+}
 
 .cancelcard:hover::after{
     transform:scaleY(1);
@@ -1181,7 +1191,6 @@ textarea#comment::placeholder {
     font-size:19px;
 }
 
-
 .buttons button:nth-child(1){
        border:1px solid #89cbeb !important;
        color:#89cbeb;
@@ -1201,3 +1210,17 @@ textarea#comment::placeholder {
        color:#fff;
         height:40px;
 }
+
+#overlay {
+    display: none;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+  
