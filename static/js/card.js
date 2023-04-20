@@ -66,15 +66,18 @@ dropdownItems.forEach(item => {
   item.addEventListener('click', () => {
     const selectedValue = item.getAttribute('data-value');
     if (selectedValue === 'Monthly') {
-      expiresOnField.innerHTML = 'Expires on <br><span style="color: #6c757d; font-weight: bold; font-size:13px;">' + new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toLocaleDateString() + '</span>';
+      const expiresOnDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toLocaleDateString('en-GB', {year: 'numeric', month: '2-digit', day: '2-digit'});
+      expiresOnField.innerHTML = `Expires on <br><span style="color: #6c757d; font-weight: bold; font-size:13px;">${expiresOnDate}</span>`;
       priceField.innerHTML = 'Price <br><span style="color: #6c757d; font-weight: bold; font-size:13px;">Rs.100 per month</span>';
     } else if (selectedValue === 'Quaterly') {
-      expiresOnField.innerHTML = 'Expires on <br><span style="color: #6c757d; font-weight: bold; font-size:13px;">' + new Date(Date.now() + 3 * 30 * 24 * 60 * 60 * 1000).toLocaleDateString() + '</span>';
+      const expiresOnDate = new Date(Date.now() + 3 * 30 * 24 * 60 * 60 * 1000).toLocaleDateString('en-GB', {year: 'numeric', month: '2-digit', day: '2-digit'});
+      expiresOnField.innerHTML = `Expires on <br><span style="color: #6c757d; font-weight: bold; font-size:13px;">${expiresOnDate}</span>`;
       priceField.innerHTML = 'Price <br><span style="color: #6c757d; font-weight: bold; font-size:13px;">Rs.270 per quarter</span>';
     } else if (selectedValue === 'Yearly') {
-      expiresOnField.innerHTML = 'Expires on <br><span style="color: #6c757d; font-weight: bold; font-size:13px;">' + new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toLocaleDateString() + '</span>';
+      const expiresOnDate = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toLocaleDateString('en-GB', {year: 'numeric', month: '2-digit', day: '2-digit'});
+      expiresOnField.innerHTML = `Expires on <br><span style="color: #6c757d; font-weight: bold; font-size:13px;">${expiresOnDate}</span>`;
       priceField.innerHTML = 'Price <br><span style="color: #6c757d; font-weight: bold; font-size:13px;">Rs.1000 per year</span>';
-    }
+    }    
   });
 });
 

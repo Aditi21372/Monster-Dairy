@@ -134,7 +134,7 @@ def shop():
                 cursor.execute('INSERT INTO cart_item (CustomerID, CartID, ItemID, TotalQuantity, Price) VALUES (%s, %s, %s, %s, %s) ON DUPLICATE KEY UPDATE TotalQuantity = TotalQuantity + %s, Price = Price + %s', (session['id'], session['id'], item_id, 1, item_price, 1, item_price))
                 mysql.connection.commit()
                 flash('Item added to cart successfully', 'success')
-                return redirect(url_for('cart'))
+                return redirect(url_for('shop'))
             except MySQLdb.OperationalError as error:
                 flash(str(error), 'error')
         return render_template("shop.html", account = account)
@@ -185,6 +185,12 @@ def profile():
 		orders = cursor.fetchone()
 		if not orders:
 			orders = "nup"
+		if request.method == 'POST':
+			form = request.form.get('form_name')
+			if form == 'subscription':
+				sub_type = request.form['typeofsub']
+				exp_date = request.form['expdate']
+				cursor.execute('INSERT INTO Subscription VALUES (NULL, %s, %s)', (sub_type, exp_date))
 		return render_template("profile.html", account = account, phone = phone, sub = sub, mem = mem, orders = orders)
 	return redirect(url_for('login'))
 
