@@ -1146,6 +1146,19 @@ textarea#comment::placeholder {
     display: none;
 }
 
+#profile-card4 {
+    display: none;
+}
+#overlay4 {
+    display: none;
+}
+#profile-card5 {
+    display: none;
+}
+#overlay5 {
+    display: none;
+}
+
 .cancelcard {
     position: fixed;
     top: 150px;
@@ -1272,3 +1285,13 @@ textarea#comment::placeholder {
     color: #fff;
   }
   
+  .dropdown-item2:hover {
+    background-color: #f8f9fa;
+    color: #202020;
+  }
+  
+  .dropdown-item2.active,
+  .dropdown-item2:active {
+    background-color: #6ca7c9;
+    color: #fff;
+  }

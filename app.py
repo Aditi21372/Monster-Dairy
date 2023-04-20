@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
+import datetime
 from flask import flash
 
 app = Flask(__name__)
@@ -178,6 +179,13 @@ def profile():
 		mem = cursor.fetchone()
 		if not mem:
 			mem = "nup"
+		else:
+			if mem['FreeDelivery'] == "Yes":
+				mem['TypeOfMem'] = "Premium"
+			elif mem['VIPOffer'] == "10":
+				mem['TypeOfMem'] = "Standard"
+			else:
+				mem['TypeOfMem'] = "Basic"
 		cursor.execute("""SELECT orders.*, customer_order.dateOfOrder
 						FROM orders
 						JOIN customer_order ON orders.orderID = customer_order.orderID
@@ -191,6 +199,32 @@ def profile():
 				exp_date = request.form['expiry_date']
 				sub_type = request.form['subscription_type']
 				cursor.execute('INSERT INTO Subscription VALUES (NULL, %s, %s)', (sub_type, exp_date))
+				subID = cursor.lastrowid
+				sub_date = datetime.datetime.now().strftime('%Y-%m-%d')
+				cursor.execute('INSERT INTO get_sub VALUES (%s, %s, %s)', (session['id'], subID, sub_date))
+				mysql.connection.commit()
+				return redirect(url_for('profile'))
+			elif form_name == 'membership':
+				exp_date = request.form['expiry_date']
+				mem_type = request.form['membership_type']
+				if mem_type == "Basic":
+					discount = 5
+					coupons = 0
+					delivery = "No"
+					cursor.execute('INSERT INTO Membership VALUES (NULL, %s, %s, %s, %s)', (discount, coupons, delivery, exp_date))
+				elif mem_type == "Standard":
+					discount = 5
+					coupons = 10
+					delivery = "No"
+					cursor.execute('INSERT INTO Membership VALUES (NULL, %s, %s, %s, %s)', (discount, coupons, delivery, exp_date))
+				elif mem_type == "Premium":
+					discount = 5
+					coupons = 10
+					delivery = "Yes"
+					cursor.execute('INSERT INTO Membership VALUES (NULL, %s, %s, %s, %s)', (discount, coupons, delivery, exp_date))
+				memID = cursor.lastrowid
+				mem_date = datetime.datetime.now().strftime('%Y-%m-%d')
+				cursor.execute('INSERT INTO get_vip VALUES (%s, %s, %s)', (session['id'], memID, mem_date))
 				mysql.connection.commit()
 				return redirect(url_for('profile'))
 		return render_template("profile.html", account = account, phone = phone, sub = sub, mem = mem, orders = orders)

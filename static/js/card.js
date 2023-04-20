@@ -15,6 +15,7 @@ noButton.addEventListener("click", function() {
     card.style.display = "none";
 });
 
+/* ------------------------------------------------------------------------------------------------------- */
 // Subscription Card
 function toggleCard2() {
   var overlay = document.getElementById("overlay2");
@@ -93,7 +94,7 @@ dropdownItems.forEach(item => {
 expiresOnField.textContent = 'Expires on';
 priceField.textContent = 'Price';
 
-
+/* ------------------------------------------------------------------------------------------------------- */
 // Membership Card
 function toggleCard3() {
   var overlay = document.getElementById("overlay3");
@@ -136,11 +137,11 @@ document.addEventListener('click', function(event) {
 });
 
 
-const dropdownButton2 = document.getElementById('dropdownMenuButton');
+const dropdownButton2 = document.getElementById('dropdownMenuButton2');
 const expiresOnField2 = document.querySelector('.features');
 const priceField2 = document.querySelector('.p_price');
 
-const dropdownItems2 = document.querySelectorAll('.dropdown-item');
+const dropdownItems2 = document.querySelectorAll('.dropdown-item2');
 dropdownItems2.forEach(item => {
   item.addEventListener('click', () => {
     const selectedValue = item.getAttribute('data-value');
@@ -154,8 +155,53 @@ dropdownItems2.forEach(item => {
       expiresOnField2.innerHTML = 'Features <br><span style="color: #6c757d; font-weight: bold; font-size:13px;">5% Discounts + VIP Coupons + Free Delivery</span>';
       priceField2.innerHTML = 'Price <br><span style="color: #6c757d; font-weight: bold; font-size:13px;">Rs.900 per year</span>';
     }
+        
+    const expiryDateInput = document.getElementById('memExpiryDate');
+    expiryDateInput.value = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+
+    const membershipTypeInput = document.getElementById('membershipType');
+    membershipTypeInput.value = selectedValue;
+
+    document.forms['membership'].submit();  
+
   });
 });
 
 expiresOnField2.textContent = 'Features';
 priceField2.textContent = 'Price';
+
+/* ------------------------------------------------------------------------------------------------------- */
+// Subscription Details Card
+function toggleCard4() {
+  var overlay = document.getElementById("overlay4");
+  var card = document.getElementById("profile-card4");
+  overlay.style.display = "block";
+  card.style.display = "block";
+}
+
+const noButton4 = document.getElementById("exit");
+const overlay4 = document.getElementById("overlay4");
+const card4 = document.getElementById("profile-card4");
+
+noButton4.addEventListener("click", function() {
+  overlay4.style.display = "none";
+  card4.style.display = "none";
+});
+
+/* ------------------------------------------------------------------------------------------------------- */
+// Membership Details Card
+function toggleCard5() {
+  var overlay = document.getElementById("overlay5");
+  var card = document.getElementById("profile-card5");
+  overlay.style.display = "block";
+  card.style.display = "block";
+}
+
+const noButton5 = document.getElementById("exit2");
+const overlay5 = document.getElementById("overlay5");
+const card5 = document.getElementById("profile-card5");
+
+noButton5.addEventListener("click", function() {
+  overlay5.style.display = "none";
+  card5.style.display = "none";
+});
