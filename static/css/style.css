@@ -1128,7 +1128,7 @@ textarea#comment::placeholder {
 #profile-card {
     display: none;
 }
-#overlay {
+#overlay1 {
     display: none;
 }
 
@@ -1247,7 +1247,7 @@ textarea#comment::placeholder {
         height:40px;
 }
 
-.overlay {
+.overlay1 {
     position: fixed;
     top: 0;
     left: 0;

@@ -1,13 +1,13 @@
 // Cancel Card
 function toggleCard() {
-    var overlay = document.getElementById("overlay");
+    var overlay = document.getElementById("overlay1");
     var card = document.getElementById("profile-card");
     overlay.style.display = "block";
     card.style.display = "block";
   }
 
 const noButton = document.getElementById("no");
-const overlay = document.getElementById("overlay");
+const overlay = document.getElementById("overlay1");
 const card = document.getElementById("profile-card");
 
 noButton.addEventListener("click", function() {

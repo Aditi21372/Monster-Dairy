@@ -209,6 +209,8 @@ def profile():
 						JOIN customer_order ON orders.orderID = customer_order.orderID
 						WHERE customer_order.customerID = % s""", (session['id'], ))
 		orders = cursor.fetchone()
+		if not orders:
+			orders = "nup"
 		if request.method == 'POST':
 			form_name = request.form['name']
 			if form_name == 'subscription':
@@ -241,6 +243,24 @@ def profile():
 				memID = cursor.lastrowid
 				mem_date = datetime.datetime.now().strftime('%Y-%m-%d')
 				cursor.execute('INSERT INTO get_vip VALUES (%s, %s, %s)', (session['id'], memID, mem_date))
+				mysql.connection.commit()
+				return redirect(url_for('profile'))
+			elif form_name == 'cancel':
+				cursor.execute("""SELECT orders.OrderID
+									FROM orders
+									JOIN customer_order ON orders.OrderID = customer_order.OrderID
+									WHERE customer_order.customerID = %s
+									ORDER BY customer_order.dateOfOrder""", (session['id'], ))
+				myorders = cursor.fetchall()
+				try:
+					last_order = myorders[-1]
+					orderID = last_order['OrderID']
+					cursor.execute("""UPDATE orders
+									SET DeliveryStatus = 'CANCELLED'
+									WHERE OrderID = %s""", (orderID, ))
+					cursor.execute("""DELETE from customer_order where OrderID = %s""", (orderID, ))
+				except IndexError as error:
+					flash(str(error), 'error')
 				mysql.connection.commit()
 				return redirect(url_for('profile'))
 		return render_template("profile.html", account = account, phone = phone, sub = sub, mem = mem, orders = orders)
