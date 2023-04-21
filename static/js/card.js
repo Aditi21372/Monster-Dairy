@@ -205,3 +205,22 @@ noButton5.addEventListener("click", function() {
   overlay5.style.display = "none";
   card5.style.display = "none";
 });
+
+
+/* ------------------------------------------------------------------------------------------------------- */
+// Orders Details Card
+function toggleCard6() {
+  var overlay = document.getElementById("overlay6");
+  var card = document.getElementById("profile-card6");
+  overlay.style.display = "block";
+  card.style.display = "block";
+}
+
+const noButton6 = document.getElementById("exit3");
+const overlay6 = document.getElementById("overlay6");
+const card6 = document.getElementById("profile-card6");
+
+noButton6.addEventListener("click", function() {
+  overlay6.style.display = "none";
+  card6.style.display = "none";
+});

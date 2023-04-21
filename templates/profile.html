@@ -121,7 +121,35 @@
             </div>
           </div>
         </div>
-        <!--card section end -->                 
+        <!--card section end -->    
+        <!--card section start -->
+        <div class="overlay" id="overlay6">
+          <div class="cancelcard p-3 py-4" id="profile-card6" style="top: 150px; bottom: 150px">
+            <div class="text-center mt-3" style="text-align: center;">
+                <h2 class="mt-2 mb-0">Your Order Details</h2>
+                <div class="px-5 mt-1 d-flex justify-content-end text-center">
+                  <div class="text-left">
+                    <h6 class="mb-0" style="color: #999; margin-left: -115px">OrderID:</h6>
+                    <h6 class="mb-0" style="color: #999; margin-left: -115px">Payment:</h6>
+                    <h6 class="mb-0" style="color: #999; margin-left: -115px;">Delivery:</h6>
+                    <h6 class="mb-0" style="color: #999; margin-left: -115px;">Total Price:</h6>
+                    <h6 class="mb-0" style="color: #999; margin-left: -115px;">Date Of Order:</h6>
+                  </div>
+                  <div class="text-right">
+                    <h6 class="mb-0" style="margin-right: 20px">{{orders['OrderID']}}</h6>
+                    <h6 class="mb-0" style="margin-right: 20px">{{orders['PaymentStatus']}}</h6>
+                    <h6 class="mb-0" style="margin-right: 20px">{{orders['DeliveryStatus']}}</h6>
+                    <h6 class="mb-0" style="margin-right: 20px">{{orders['TotalPrice']}}</h6>
+                    <h6 class="mb-0" style="margin-right: 20px">{{orders['dateOfOrder']}}</h6>
+                  </div>
+                </div>
+                <div class="buttons">
+                    <button class="btn btn-outline-primary px-4" id="exit3" style="margin-right: 10px">Exit</button>
+                </div>
+            </div>
+          </div>
+        </div>
+        <!--card section end -->                                      
         <!--card section start -->
         <div class="overlay" id="overlay2">
           <div class="cancelcard p-3 py-4" id="profile-card2" style="top: 100px; bottom: 100px">
@@ -191,7 +219,6 @@
           </div>
         </div>
         <!--card section end -->      
-             
               <!-- Breadcrumb -->
               <!-- <nav aria-label="breadcrumb" class="main-breadcrumb">
                 <ol class="breadcrumb">
@@ -318,12 +345,7 @@
                       <div class="card h-100">
                         <div class="card-body">
                           <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Past Orders</i>Status</h6>
-                          {% if orders != "nup" %}
-                            {% for i in range(orders|length) %}
-                              <small>Click to see details</small>
-                              <h6 class="mb-0">Order ID {{orders[i]['OrderID']}}</h6>
-                            {% endfor %}
-                          {% else %}
+                          {% if orders|length == 0 %}
                             <style>
                               .link {
                                 color: inherit;
@@ -335,6 +357,19 @@
                             </style>
                             <small><a href="{{url_for('cart')}}" class="link">Place an order</a></small>
                             <h6 class="mb-0">You have no recent orders</h6>
+                          {% else %}
+                            <style>
+                              .link {
+                                color: inherit;
+                                text-decoration: inherit;
+                              }
+                              .link:hover {
+                                color: #49a9bc;
+                                cursor: pointer;
+                              }
+                            </style>
+                            <small class="link" onclick="toggleCard6()">Click to see details</small>
+                            <h6 class="mb-0">Order ID {{orders['OrderID']}}</h6>
                           {% endif %}
                         </div>
                       </div>

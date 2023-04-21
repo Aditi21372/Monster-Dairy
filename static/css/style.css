@@ -1158,6 +1158,12 @@ textarea#comment::placeholder {
 #overlay5 {
     display: none;
 }
+#profile-card6 {
+    display: none;
+}
+#overlay6 {
+    display: none;
+}
 
 .cancelcard {
     position: fixed;

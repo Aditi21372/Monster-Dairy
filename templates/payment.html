@@ -30,7 +30,7 @@
                 <img id="product" src="{{ url_for('static', filename='images/milk.webp') }}" />
               </div>
               <div id="payment">
-                <form id="checkout">
+                <form id="checkout" action="{{ url_for('payment') }}" method="POST">
                   <input class="card" id="visa" type="button" name="card" value="">
                   <input class="card" id="mastercard" type="button" name="card" value="">
                   <label>Credit Card Number</label>
@@ -70,10 +70,11 @@
                       <option value="10">25</option>
                     </select>
                   </div>
-                  <input id="cvc" type="text" placeholder="Cvc/Cvv" maxlength="3" />
-                  <input class="btn" type="button" name="purchase" value="Purchase">
+                  <input id="cvc" type="text" placeholder="Cvc/Cvv" maxlength="3"/>
+                  <input type="hidden" name="price" value={{account['SUM(price)']}}>
+                  <button type="submit" class="btn" name="purchase" value="Purchase">Purchase</button>
                 </form>
-              </div>
+                </div>
             </div>
         </div>
     </body>

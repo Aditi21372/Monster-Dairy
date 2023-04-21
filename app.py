@@ -163,6 +163,15 @@ def payment():
 		cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
 		cursor.execute('SELECT SUM(TotalQuantity), SUM(price) FROM cart_item WHERE customerID = % s', (session['id'], ))
 		account = cursor.fetchone()
+		if request.method == 'POST':
+			price = request.form['price']
+			cursor.execute('INSERT INTO Orders VALUES (NULL, "Net Banking", "On the Way", %s)', (price,))
+			orderID = cursor.lastrowid
+			cursor.execute('INSERT INTO cart VALUES (%s, NULL, 1, %s)', (session['id'], price))
+			today = datetime.datetime.now().strftime('%Y-%m-%d')
+			cursor.execute('INSERT INTO customer_order VALUES (%s, %s, %s, %s)', (orderID, session['id'], session['id'], today))
+			mysql.connection.commit()
+			return redirect(url_for('profile'))
 		return render_template("payment.html", account = account)
 	return redirect(url_for('login'))
 
@@ -200,8 +209,6 @@ def profile():
 						JOIN customer_order ON orders.orderID = customer_order.orderID
 						WHERE customer_order.customerID = % s""", (session['id'], ))
 		orders = cursor.fetchone()
-		if not orders:
-			orders = "nup"
 		if request.method == 'POST':
 			form_name = request.form['name']
 			if form_name == 'subscription':
