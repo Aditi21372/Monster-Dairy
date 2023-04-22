@@ -1330,7 +1330,7 @@ textarea#comment::placeholder {
     position: relative;
     -webkit-backface-visibility: hidden;
     width: 200px;
-    margin-bottom: 35px;
+    margin-bottom: 30px;
     max-width: 100%;
   }
   
@@ -1416,6 +1416,7 @@ textarea#comment::placeholder {
     font-size: 17px;
     color: #fff;
     font-weight: bold;
+    margin-top: -20px;
   }
   
   .flip-box p {
@@ -1427,6 +1428,7 @@ textarea#comment::placeholder {
     margin-top: 10px;
     width: 50%;
     height: 50%;
+    margin-top: 120px;
   }
   
   .flip-box-button {
@@ -1438,7 +1440,7 @@ textarea#comment::placeholder {
     cursor: pointer;
     font-size: 11px;
     font-weight: bold;
-    margin-top: 10px;
+    margin-top: 120px;
     padding: 5px 10px;
     text-transform: uppercase;
   }
