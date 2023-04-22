@@ -1,33 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- basic -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- mobile metas -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-<!-- site metas -->
 <title>Monster Dairy</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content=""> 
-<!-- bootstrap css -->
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-<!-- style css -->
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
-<!-- Responsive-->
 <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
-<!-- fevicon -->
 <!--  <link rel="icon" href="{{ url_for('static', filename='images/fevicon.png') }}" type="image/gif" /> -- >
-<!-- Scrollbar Custom CSS -->
 <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.mCustomScrollbar.min.css') }}">
-<!-- Tweaks for older IEs-->
 <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-<!-- owl stylesheets --> 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
-<!--  <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }}"> -- >
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
 </head>
 <body>  
@@ -72,41 +61,18 @@
         <div class="footer_main2">
         <div class="footer_center">
             <h1 class="contact_taital2"><span>Inventory</span></h1>
-            <p class="choose_text">Total quantity supplied for each State, City, and AdminUserName combination, <br>as well as the grand totals for all States, Cities, and AdminUserNames:</p>
-            <div class="col-md-12">
-                <span>
-                  <table style="margin: 0 auto;">
-                    <tr>
-                    <th style="padding: 20px;">State</th>
-                    <th style="padding: 20px;">City</th>
-                    <th style="padding: 20px;">AdminUserName</th>
-                    <th style="padding: 20px;">TotalQuantitySupplied</th>
-                    </tr>
-                    {% for i in range(249) %}
-                      <tr>
-                      <td style="padding: 20px;">{{account[i]['State']}}</td>
-                      <td style="padding: 20px;">{{account[i]['City']}}</td>
-                      <td style="padding: 20px;">{{account[i]['AdminUserName']}}</td>
-                      <td style="padding: 20px;">{{account[i]['TotalQuantitySupplied']}}</td>
-                    </tr>
-                    {% endfor %}
-                </table></span>
-            </div>
-            </div>
+        </div>
         </div>
         </div>
       </div>  
     <!-- footer section end -->
-    <!-- Javascript files-->
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/jquery-3.0.0.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/plugin.js') }}"></script>
-    <!-- sidebar -->
     <script src="{{ url_for('static', filename='js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
-    <!-- javascript --> 
     <script src="{{ url_for('static', filename='js/owl.carousel.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
     <script>
