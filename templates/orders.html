@@ -61,28 +61,6 @@
         <div class="footer_main2">
         <div class="footer_center">
             <h1 class="contact_taital2"><span>Orders</span></h1>
-            <p class="choose_text">Total quantity, average price, and total revenue for all orders that were placed between years 2000 and 2023:</p>
-            <div class="col-md-12">
-                <span>
-                  <table style="margin: 0 auto;">
-                    <tr>
-                    <th style="padding: 20px;">CustomerID</th>
-                    <th style="padding: 20px;">Year</th>
-                    <th style="padding: 20px;">TotalQuantity</th>
-                    <th style="padding: 20px;">AvgPrice</th>
-                    <th style="padding: 20px;">TotalRevenue</th>
-                    </tr>
-                    {% for i in range(9) %}
-                      <tr>
-                      <td style="padding: 20px;">{{account[i]['CustomerID']}}</td>
-                      <td style="padding: 20px;">{{account[i]['Year']}}</td>
-                      <td style="padding: 20px;">{{account[i]['TotalQuantity']}}</td>
-                      <td style="padding: 20px;">{{account[i]['AvgPrice']}}</td>
-                      <td style="padding: 20px;">{{account[i]['TotalRevenue']}}</td>
-                    </tr>
-                    {% endfor %}
-                </table></span>
-            </div>
         </div>
         </div>
         </div>
