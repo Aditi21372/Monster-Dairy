@@ -34,6 +34,11 @@ def adminindex():
 	msg = ''
 	return render_template('adminindex.html', msg = msg)
 
+@app.route('/trial', methods =['GET', 'POST'])
+def trial():
+	msg = ''
+	return render_template('trial.html', msg = msg)
+
 @app.route('/login', methods =['GET', 'POST'])
 def login():
 	msg = ''
