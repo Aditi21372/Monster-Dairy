@@ -34,11 +34,6 @@ def adminindex():
 	msg = ''
 	return render_template('adminindex.html', msg = msg)
 
-@app.route('/trial', methods =['GET', 'POST'])
-def trial():
-	msg = ''
-	return render_template('trial.html', msg = msg)
-
 @app.route('/login', methods =['GET', 'POST'])
 def login():
 	msg = ''
@@ -274,6 +269,12 @@ def profile():
 @app.route("/sales")
 def sales():
 	if 'adminin' in session:
+		return render_template("sales.html")
+	return redirect(url_for('admin'))
+
+@app.route("/sq1")
+def sq1():
+	if 'adminin' in session:
 		cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
 		cursor.execute("""SELECT BranchID, 
 							SUM(DailySales) AS TotalDailySales,
@@ -284,51 +285,11 @@ def sales():
 							FROM sales
 							GROUP BY BranchID WITH ROLLUP;""")
 		account = cursor.fetchall()
-		return render_template("sales.html", account = account)
+		return render_template("sq1.html", account = account)
 	return redirect(url_for('admin'))
 
-@app.route("/products")
-def products():
-	if 'adminin' in session:
-		cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-		cursor.execute("""SELECT 
-						ItemID, 
-						SUM(CASE WHEN YEAR(ManufacturingDate) = 2021 THEN QuantityLeft ELSE 0 END) AS QuantityLeft_2021,
-						SUM(CASE WHEN YEAR(ManufacturingDate) = 2022 THEN QuantityLeft ELSE 0 END) AS QuantityLeft_2022,
-						SUM(CASE WHEN YEAR(ManufacturingDate) = 2023 THEN QuantityLeft ELSE 0 END) AS QuantityLeft_2023,
-						AVG(Price) AS AvgPrice 
-						FROM 
-							item 
-						GROUP BY 
-							ItemID;""")
-		account = cursor.fetchall()
-		return render_template("products.html", account = account)
-	return redirect(url_for('admin'))
-
-@app.route("/inventory")
-def inventory():
-	if 'adminin' in session:
-		cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-		cursor.execute("""SELECT 
-							warehouse.State AS State,
-							farm.City AS City,
-							admin.username AS AdminUserName,
-							SUM(distributor.QuantitySupplied) AS TotalQuantitySupplied
-						FROM 
-							distributor 
-							JOIN warehouse ON distributor.WarehouseID = warehouse.WarehouseID
-							JOIN farm ON distributor.FarmID = farm.FarmID
-							JOIN admin ON distributor.AdminID = admin.AdminID
-						GROUP BY 
-							warehouse.State, 
-							farm.City, 
-							admin.username WITH ROLLUP;""")
-		account = cursor.fetchall()
-		return render_template("inventory.html", account = account)
-	return redirect(url_for('admin'))
-
-@app.route('/orders')
-def orders():
+@app.route('/sq2')
+def sq2():
 	if 'adminin' in session:
 		cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
 		cursor.execute("""SELECT 
@@ -346,11 +307,91 @@ def orders():
 							customer_order.CustomerID, 
 							YEAR(customer_order.dateOfOrder);""")
 		account = cursor.fetchall()
-		return render_template("orders.html", account = account)
+		return render_template("sq2.html", account = account)
+	return redirect(url_for('admin'))
+
+@app.route("/products")
+def products():
+	if 'adminin' in session:
+		return render_template("products.html")
+	return redirect(url_for('admin'))
+
+@app.route("/pq1")
+def pq1():
+	if 'adminin' in session:
+		cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+		cursor.execute("""SELECT 
+						ItemID, 
+						SUM(CASE WHEN YEAR(ManufacturingDate) = 2021 THEN QuantityLeft ELSE 0 END) AS QuantityLeft_2021,
+						SUM(CASE WHEN YEAR(ManufacturingDate) = 2022 THEN QuantityLeft ELSE 0 END) AS QuantityLeft_2022,
+						SUM(CASE WHEN YEAR(ManufacturingDate) = 2023 THEN QuantityLeft ELSE 0 END) AS QuantityLeft_2023,
+						AVG(Price) AS AvgPrice 
+						FROM 
+							item 
+						GROUP BY 
+							ItemID;""")
+		account = cursor.fetchall()
+		return render_template("pq1.html", account = account)
+	return redirect(url_for('admin'))
+
+@app.route("/inventory")
+def inventory():
+	if 'adminin' in session:
+		return render_template("inventory.html")
+	return redirect(url_for('admin'))
+
+@app.route("/iq1")
+def iq1():
+	if 'adminin' in session:
+		cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+		cursor.execute("""SELECT 
+							warehouse.State AS State,
+							farm.City AS City,
+							admin.username AS AdminUserName,
+							SUM(distributor.QuantitySupplied) AS TotalQuantitySupplied
+						FROM 
+							distributor 
+							JOIN warehouse ON distributor.WarehouseID = warehouse.WarehouseID
+							JOIN farm ON distributor.FarmID = farm.FarmID
+							JOIN admin ON distributor.AdminID = admin.AdminID
+						GROUP BY 
+							warehouse.State, 
+							farm.City, 
+							admin.username WITH ROLLUP;""")
+		account = cursor.fetchall()
+		return render_template("iq1.html", account = account)
+	return redirect(url_for('admin'))
+
+@app.route('/outlets')
+def outlets():
+	if 'adminin' in session:
+		cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+		cursor.execute("""SELECT 
+							customer_order.CustomerID AS CustomerID, 
+							YEAR(customer_order.dateOfOrder) AS Year, 
+							SUM(cart_item.TotalQuantity) AS TotalQuantity,
+							AVG(cart_item.Price) AS AvgPrice,
+							SUM(cart_item.TotalQuantity * cart_item.Price) AS TotalRevenue
+						FROM 
+							customer_order 
+							JOIN cart_item ON customer_order.CustomerID = cart_item.CustomerID AND customer_order.CartID = cart_item.CartID
+						WHERE 
+							customer_order.dateOfOrder >= '2000-01-01' AND customer_order.dateOfOrder < '2023-01-01' -- slice by date range
+						GROUP BY
+							customer_order.CustomerID, 
+							YEAR(customer_order.dateOfOrder);""")
+		account = cursor.fetchall()
+		return render_template("outlets.html", account = account)
 	return redirect(url_for('admin'))
 
 @app.route("/staff")
 def staff():
+	if 'adminin' in session:
+		return render_template("staff.html")
+	return redirect(url_for('admin'))
+
+@app.route("/stq1")
+def stq1():
 	if 'adminin' in session:
 		cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
 		cursor.execute("""SELECT 
@@ -367,7 +408,7 @@ def staff():
 						WITH ROLLUP;
 						""")
 		account = cursor.fetchall()
-		return render_template("staff.html", account = account)
+		return render_template("stq1.html", account = account)
 	return redirect(url_for('admin'))
 
 if __name__ == "__main__":
