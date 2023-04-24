@@ -1446,6 +1446,7 @@ textarea#comment::placeholder {
   }
 
 .querycard {
+    cursor: pointer;
     margin-top: 20px;
     margin-left: 20px;
     border-radius: 10px;

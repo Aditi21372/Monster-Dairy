@@ -43,7 +43,7 @@
                   <a href="{{url_for('sales')}}">Sales</a>
                   <a href="{{url_for('products')}}">Products</a>
                   <a href="{{url_for('inventory')}}">Inventory</a>
-                  <a href="{{url_for('orders')}}">Orders</a>
+                  <a href="{{url_for('outlets')}}">Outlets</a>
                   <a href="{{url_for('staff')}}">Staff</a>
                 </div>
                 </div>
@@ -81,25 +81,31 @@
             <p>Determine the quantity and corresponding revenue generated for each item
               present in the cart table.</p>
           </div>
+          <a href="{{url_for('sq1')}}">
           <div class="querycard">
             <h4>Total sales of each branch?</h4>
             <p>Determine the total sales for each branch, with subtotals for daily, monthly, 
               quarterly, and annual sales.</p>
           </div>
+          </a>
           <div class="querycard">
             <h4>Cart with no items</h4>
             <p>Retrive the list of carts with no items in them.</p>
           </div>
+          <a href="{{url_for('sq2')}}">
           <div class="querycard">
             <h4>Orders between 2000 and 2023</h4>
             <p>Total quantity, average price, and total revenue for all orders that were placed between years 2000 and 2023.</p>
           </div>
+          </a>
+          <a href="{{url_for('sq3')}}">
           <div class="querycard">
             <h4>Sales in cities & states</h4>
             <p>Discover the total number of employees and total sales for each city and state 
               in the branch table, also the total number of employees and total sales for each 
               state, and the grand total for all states and cities.</p>
           </div>
+          </a>
         </div>
       </div>
     </div>

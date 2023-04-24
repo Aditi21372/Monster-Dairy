@@ -390,8 +390,8 @@ def staff():
 		return render_template("staff.html")
 	return redirect(url_for('admin'))
 
-@app.route("/stq1")
-def stq1():
+@app.route("/sq3")
+def sq3():
 	if 'adminin' in session:
 		cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
 		cursor.execute("""SELECT 
@@ -408,7 +408,7 @@ def stq1():
 						WITH ROLLUP;
 						""")
 		account = cursor.fetchall()
-		return render_template("stq1.html", account = account)
+		return render_template("sq3.html", account = account)
 	return redirect(url_for('admin'))
 
 if __name__ == "__main__":
