@@ -42,7 +42,7 @@
                   <a href="{{url_for('sales')}}">Sales</a>
                   <a href="{{url_for('products')}}">Products</a>
                   <a href="{{url_for('inventory')}}">Inventory</a>
-                  <a href="{{url_for('orders')}}">Orders</a>
+                  <a href="{{url_for('outlets')}}">Outlets</a>
                   <a href="{{url_for('staff')}}">Staff</a>
                 </div>
                 </div>
@@ -60,7 +60,7 @@
         <div class="container_center">
         <div class="footer_main2">
         <div class="footer_center">
-            <h1 class="contact_taital2"><span>Orders</span></h1>
+            <h1 class="contact_taital2"><span>Sales</span></h1>
             <p class="choose_text">Total quantity, average price, and total revenue for all orders that were placed between years 2000 and 2023:</p>
             <div class="col-md-12">
                 <span>
@@ -72,7 +72,7 @@
                     <th style="padding: 20px;">AvgPrice</th>
                     <th style="padding: 20px;">TotalRevenue</th>
                     </tr>
-                    {% for i in range(9) %}
+                    {% for i in range(3) %}
                       <tr>
                       <td style="padding: 20px;">{{account[i]['CustomerID']}}</td>
                       <td style="padding: 20px;">{{account[i]['Year']}}</td>
